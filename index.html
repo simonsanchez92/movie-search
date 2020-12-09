@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Info</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Movie searcher</h1>
+        <div class="search-container" id='search-container'>
+
+            <div class="search-box">
+
+                <form class='search-form' id='search-form'>
+
+                    <input type="text" placeholder='Enter a movie...' class="search-input" id='search-input'>
+                    <input value='Search' type='submit' class='search-form search-Btn' id='searchBtn'
+                        placeholder=""></input>
+                </form>
+            </div>
+        </div>
+
+
+
+        <div class="main" id='main'>
+            <h2 id="search-result-text"></h2>
+
+            <div class="main movies" id='main-movies'>
+
+
+            </div>
+        </div>
+
+
+        <div class="movie-detail" id="movie-detail">
+            <div id="movie-detail-container" class="movie-detail-container">
+                <button class='read-plot' id='read-plot'>Read plot</button>
+                <button class='go-back-btn' id='go-back-btn'>Go back</button>
+    
+    
+                <button class='return-btn' id='return-btn'>Return</button>
+            </div>
+    
+        </div>
+    </div>
+
+   
+
+    <script src="script.js"></script>
+</body>
+
+</html>
