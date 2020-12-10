@@ -6,6 +6,7 @@
 
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 0;
@@ -210,45 +211,18 @@ body {
 }
 
 .movie-detail {
-  /* position: fixed;
-    top: 0;
-    left: 0; */
-  /* width: 100%;
-    height: 100%; */
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.23);
-  padding-top: 40px;
-  width: 100%;
+  border: 2px solid red;
+  padding: 20px;
+  /* width: 700px; */
+  max-width: 100%;
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.movie-detail.plot {
-  height: 100vh;
-}
-
-.movie-detail.plot .movie-detail-container {
-  display: flex;
-  width: 100%;
-}
-
-.movie-detail-container {
-  display: flex;
-  border-radius: 10px;
-  /* padding: 20px; */
-  /* background-color: rgba(0, 0, 0, 0.747); */
-  width: 100%;
-}
-
-.movie-detail.plot .results-info {
-}
-
-.movie-detail-container h2 {
-  margin-top: 200px;
-}
-
-.results-info {
+/* .results-info {
   padding: 0 10px;
   display: flex;
 }
@@ -257,19 +231,59 @@ body {
   padding: 0 10px;
   display: flex;
   width: 100%;
+} */
+.movie-detail h3 {
+  padding-left: 6px;
+  margin: 20px;
+  font-size: 2.5rem;
 }
 
 .movie-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid blue;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.img-container {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* margin-bottom: 50px; */
+}
+
+.img-container img {
+  cursor: pointer;
+  border-radius: 4px;
+  /* height: 350px;
+  width: 250px; */
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.164);
+  -webkit-box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
+  -moz-box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
+  box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
+  transition: transform 0.2s ease-in-out;
+}
+.img-container img:hover {
+  transform: scale(0.99);
+}
+
+.movie-data-list {
+  border: 2px solid yellow;
   flex: 1;
 }
 
-.movie-data p {
-  font-size: 22px;
+.movie-data-list p {
+  font-size: 20px;
   text-align: justify;
   padding: 20px 10px;
 }
 
-.movie-data-list {
+.movie-data-list ul {
   padding: 20px 10px;
   padding-bottom: 60px;
 }
@@ -277,14 +291,8 @@ body {
 .movie-data-list li {
   list-style-type: none;
   padding: 8px 0;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 900;
-}
-
-.results-info .movie-data h3 {
-  margin: 0;
-  padding-left: 6px;
-  font-size: 2rem;
 }
 
 .fas {
@@ -294,33 +302,6 @@ body {
 .movie-data-list li .fas {
   margin: 0;
   margin-right: 10px;
-}
-
-.img-container {
-  width: 500px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  margin-right: 15px;
-  margin-left: 30px;
-  /* margin-bottom: 50px; */
-}
-
-.img-container img {
-  cursor: pointer;
-  border-radius: 4px;
-  height: 350px;
-  width: 250px;
-  border: 2px solid rgba(0, 0, 0, 0.164);
-  -webkit-box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
-  -moz-box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
-  box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
-  transition: transform 0.2s ease-in-out;
-}
-.img-container img:hover {
-  transform: scale(0.99);
 }
 
 .read-plot,
@@ -349,9 +330,6 @@ body {
 .return-btn-icon {
   margin: 0 auto;
   padding: 10px;
-}
-
-.return-btn i {
 }
 
 .read-plot:hover,
@@ -396,24 +374,23 @@ body {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .main h2 {
-    font-size: 26px;
+    font-size: 22px;
     padding: 0px 15px;
     margin-bottom: 30px;
   }
 
-  .results-info {
+  .movie-data {
     padding: 0 10px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 100%;
     border-top: 0;
   }
 
   .img-container {
-    width: 50%;
-    margin: 20px auto;
+    /* margin: 20px auto; */
   }
 
   .img-container img {
@@ -426,9 +403,8 @@ body {
     box-shadow: -1px 9px 31px -1px rgba(163, 51, 39, 1);
   }
 
-  .results-info .movie-data h3 {
-    text-align: center;
-    padding-left: 0;
+  .movie-detail h3 {
+    font-size: 1.5rem;
   }
 
   .movie-data-list li {
@@ -436,8 +412,8 @@ body {
   }
 
   .movie-data p {
-    font-size: 20px;
-    padding: 20px 10px;
+    font-size: 18px;
+    /* padding: 20px 10px; */
     text-align: justify;
   }
 }

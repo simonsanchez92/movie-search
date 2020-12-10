@@ -5,13 +5,14 @@ const resultText = document.getElementById('search-result-text');
 // const searchResults = document.getElementById('main');
 
 const resultsContainer = document.getElementById('main');
-const readPlotBtn = document.getElementById('read-plot');
+const mainResults = document.getElementById('movies-container');
+
+
 const goBackBtn = document.getElementById('go-back-btn');
 
 const movieDetailEl = document.getElementById('movie-detail');
-const movieDetailContainer = document.getElementById('movie-detail-container')
 
-const mainResults = document.getElementById('movies-container');
+
 
 
 const pagination = document.getElementById('pagination');
@@ -97,30 +98,33 @@ function showMovieDetail(data){
 
     resultsContainer.style.display = 'none';
     console.log(data)
-    readPlotBtn.style.display = 'block';
+    movieDetailEl.style.display = 'flex';
         
-    movieDetailContainer.innerHTML = `
+    movieDetailEl.innerHTML = `
     
-    <div class='results-info'>
-    <div class='movie-data'>
+    
     <h3 class='movie-title'>${data.title}<i class="fas fa-film"></i></h3>
-    <ul class='movie-data-list'>
+
+    <div class='movie-data'>
+
+    <div class='img-container'>
+        <img src='${data.poster_path !== null ? IMG_PATH + data.poster_path : 'img/default.jpg'}' alt='${data.original_title}'/>
+    </div>
+
+    <div class='movie-data-list'>
+        <p>${data.overview}</p>
+
+        <ul>
         <li><i class="fas fa-star"></i>imdbRating: ${data.imdb_id}</li>
         <li><i class="fas fa-star"></i>Year: ${data.release_date}</li>
-      
-            
-       
     </ul>
-    <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
-    <button class='read-plot' id='read-plot' onclick=readPlot()>Read plot</button>
-    
     </div>
     
-   
+
+    </div>
+    <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
+    `
     
-    </div>`
-    goBackBtn.style.visibility = 'flex';
-    movieDetailEl.style.display = 'flex';
 }
 
 
@@ -286,19 +290,19 @@ let currentTitle = currentMovie.Title;
         })
 }
 
-function goBack() {
-    console.log(currentMovie);
-    movieDetailContainer.innerHTML = '';
-    showMovieDetail(currentMovie);
-    movieDetailEl.classList.remove('plot');
-    // goBackBtn.style.visibility = 'hidden';
-    readPlotBtn.style.visibility = 'visible';
-}
+// function goBack() {
+//     console.log(currentMovie);
+//     movieDetailContainer.innerHTML = '';
+//     showMovieDetail(currentMovie);
+//     movieDetailEl.classList.remove('plot');
+//     // goBackBtn.style.visibility = 'hidden';
+//     readPlotBtn.style.visibility = 'visible';
+// }
 
-function returnHome() {
-    searchResults.style.display = 'flex';
-    movieDetailEl.style.display = 'none';
-}
+// function returnHome() {
+//     searchResults.style.display = 'flex';
+//     movieDetailEl.style.display = 'none';
+// }
 
 
 
@@ -314,7 +318,7 @@ searchInput.addEventListener('input', (e) => {
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     currentMovie = undefined;
-   searchResults.style.display = 'flex';
+   resultsContainer.style.display = 'flex';
     // mainResults.innerHTML = '';
     // getAllData();
     page = 1;
