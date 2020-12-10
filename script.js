@@ -12,7 +12,16 @@ const movieDetailContainer = document.getElementById('movie-detail-container')
 const mainResults = document.getElementById('main-movies');
 
 
-const API_URL ='https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4c0c205a5315c151196343cd53dbf96f&page=1';
+const pagination = document.getElementById('pagination');
+
+//Global variables
+
+let searchText = '';
+let moviesResult = [];
+let page = 1;
+
+const API_URL =`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4c0c205a5315c151196343cd53dbf96f&page=${page}`;
+const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=4c0c205a5315c151196343cd53dbf96f&query='
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280';
 
 
@@ -21,10 +30,6 @@ window.onload = () => {
     searchContainer.style.opacity = '1';
 }
 
-//Global variables
-
-let searchText = '';
-let moviesResult = [];
 
 //********************/
 
@@ -37,15 +42,20 @@ const getMovies = async (url)=>{
    const data = await res.json();
    
    console.log(data);
-   showMovies(data);
+   showMovies(data, url);
 }
 
 getMovies(API_URL);
 
-const showMovies = (movies)=>{
+const showMovies = (movies, url)=>{
     //Destructure data
     const {page, results, total_pages} = movies;
-    console.log(page);
+   
+    pagination.innerHTML = `
+            <button class='btn' onclick="getPrevPage('${url}')">Prev</button>
+            <button class='btn' onclick="getNextPage('${url}', '${total_pages}')">Next</button>
+    `
+
     //Insert search result text
 
     // resultText.innerText = `Results for '${searchText}'` 
@@ -60,12 +70,36 @@ const showMovies = (movies)=>{
         <i class="fas fa-tv"></i>
         <h3>${movie.original_title}</h3>
         <div class="movie-img-container">
-        <img src="${IMG_PATH}${movie.poster_path}" alt="${movie.original_title}">
+        <img src="${movie.poster_path !== null ? IMG_PATH + movie.poster_path : 'img/default.jpg'}" alt="${movie.original_title}">
         </div> 
         <div class="card-overlay"> <button onclick="getMovieDetail(${i})">See More...</button></div>
         </div>`
     }).join(""); 
+
+   
 }
+
+
+
+//Pagination 
+
+const getNextPage= (url, totalPages)=>{
+    if(page < totalPages){
+    page++;
+    const query = url.split('&page=')[0] + `&page=${page}`;
+    getMovies(query);
+   }
+}
+
+const getPrevPage = (url)=>{  
+    if(page > 1){
+        page--;
+        const query = url.split('&page=')[0] + `&page=${page}`;
+        getMovies(query);       
+    }  
+}
+
+
 
 // async function getAllData() {
 //     // moviesResult = [];
@@ -228,6 +262,7 @@ function returnHome() {
 //Event listeners
 searchInput.addEventListener('input', (e) => {
     searchText = e.target.value.trim();
+    // console.log(searchText);
 });
 
 searchForm.addEventListener('submit', (e) => {
@@ -235,7 +270,11 @@ searchForm.addEventListener('submit', (e) => {
     currentMovie = undefined;
    searchResults.style.display = 'flex';
     // mainResults.innerHTML = '';
-    getAllData();
+    // getAllData();
+    page = 1;
+    const query = SEARCH_API + searchText + `&page=${page}`;
+    console.log(query)
+    getMovies(query);
     searchInput.value = '';
     // populateUI();
 })
