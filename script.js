@@ -2,23 +2,26 @@ const searchContainer = document.getElementById('search-container');
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const resultText = document.getElementById('search-result-text');
-const searchResults = document.getElementById('main');
+// const searchResults = document.getElementById('main');
+
+const resultsContainer = document.getElementById('main');
 const readPlotBtn = document.getElementById('read-plot');
 const goBackBtn = document.getElementById('go-back-btn');
 
 const movieDetailEl = document.getElementById('movie-detail');
 const movieDetailContainer = document.getElementById('movie-detail-container')
 
-const mainResults = document.getElementById('main-movies');
+const mainResults = document.getElementById('movies-container');
 
 
 const pagination = document.getElementById('pagination');
 
 //Global variables
-
 let searchText = '';
 let moviesResult = [];
+let movieId;
 let page = 1;
+
 
 const API_URL =`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=4c0c205a5315c151196343cd53dbf96f&page=${page}`;
 const SEARCH_API = 'https://api.themoviedb.org/3/search/movie?api_key=4c0c205a5315c151196343cd53dbf96f&query='
@@ -66,18 +69,60 @@ const showMovies = (movies, url)=>{
       
     mainResults.innerHTML = results.map((movie, i)=>{
         // currentMovies.push(movie);
+        // console.log(movie);
+
         return `<div class="movie-card">
         <i class="fas fa-tv"></i>
         <h3>${movie.original_title}</h3>
         <div class="movie-img-container">
         <img src="${movie.poster_path !== null ? IMG_PATH + movie.poster_path : 'img/default.jpg'}" alt="${movie.original_title}">
         </div> 
-        <div class="card-overlay"> <button onclick="getMovieDetail(${i})">See More...</button></div>
+        <div class="card-overlay"> <button onclick="movieDetail(${movie.id})">See More...</button></div>
         </div>`
     }).join(""); 
+}
 
+async function movieDetail(id){
+    console.log(id)
+    const query = `https://api.themoviedb.org/3/movie/${id}?api_key=4c0c205a5315c151196343cd53dbf96f`
+    const res = await fetch(query);
+    const data = await res.json();
+    
+ 
+    showMovieDetail(data)
    
 }
+
+function showMovieDetail(data){
+
+    resultsContainer.style.display = 'none';
+    console.log(data)
+    readPlotBtn.style.display = 'block';
+        
+    movieDetailContainer.innerHTML = `
+    
+    <div class='results-info'>
+    <div class='movie-data'>
+    <h3 class='movie-title'>${data.title}<i class="fas fa-film"></i></h3>
+    <ul class='movie-data-list'>
+        <li><i class="fas fa-star"></i>imdbRating: ${data.imdb_id}</li>
+        <li><i class="fas fa-star"></i>Year: ${data.release_date}</li>
+      
+            
+       
+    </ul>
+    <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
+    <button class='read-plot' id='read-plot' onclick=readPlot()>Read plot</button>
+    
+    </div>
+    
+   
+    
+    </div>`
+    goBackBtn.style.visibility = 'flex';
+    movieDetailEl.style.display = 'flex';
+}
+
 
 
 
@@ -152,62 +197,63 @@ const getPrevPage = (url)=>{
 
 
 //Detail page
-let currentMovie;
-function getMovieDetail(movieIndex) {
-    let title = moviesResult[movieIndex].Title;
+
+// let currentMovie;
+// function getMovieDetail(movieIndex) {
+//     let title = moviesResult[movieIndex].Title;
   
-    fetch(`http://www.omdbapi.com/?t=${title}&apikey=9bdd7c5c`)
-    .then(res=> res.json())
-    .then(data=>{
-        currentMovie = data;
-        showMovieDetail(data);
+//     fetch(`http://www.omdbapi.com/?t=${title}&apikey=9bdd7c5c`)
+//     .then(res=> res.json())
+//     .then(data=>{
+//         currentMovie = data;
+//         showMovieDetail(data);
        
-    });
+//     });
     
-searchResults.style.display = 'none';
-}
+// searchResults.style.display = 'none';
+// }
 
 
-function showMovieDetail(data) {
+// function showMovieDetail(data) {
 
-    if (data.Title === undefined) {
-        // readPlotBtn.style.display = 'none';
-        // goBackBtn.style.visibility = 'hidden';
-    } else {
+//     if (data.Title === undefined) {
+//         // readPlotBtn.style.display = 'none';
+//         // goBackBtn.style.visibility = 'hidden';
+//     } else {
        
-        readPlotBtn.style.display = 'block';
+//         readPlotBtn.style.display = 'block';
         
-        movieDetailContainer.innerHTML = `
+//         movieDetailContainer.innerHTML = `
         
-        <div class='results-info'>
-        <div class='movie-data'>
-        <h3 class='movie-title'>${data.Title}<i class="fas fa-film"></i></h3>
-        <ul class='movie-data-list'>
-            <li><i class="fas fa-star"></i>imdbRating: ${data.imdbRating}</li>
-            <li><i class="fas fa-star"></i>Year: ${data.Year}</li>
-            <li><i class="fas fa-star"></i>Director: ${data.Director}</li>
-            <li><i class="fas fa-star"></i>Featuring: ${data.Actors}</li>         
-            <li><i class="fas fa-star"></i>Country: ${data.Country}</li>
+//         <div class='results-info'>
+//         <div class='movie-data'>
+//         <h3 class='movie-title'>${data.Title}<i class="fas fa-film"></i></h3>
+//         <ul class='movie-data-list'>
+//             <li><i class="fas fa-star"></i>imdbRating: ${data.imdbRating}</li>
+//             <li><i class="fas fa-star"></i>Year: ${data.Year}</li>
+//             <li><i class="fas fa-star"></i>Director: ${data.Director}</li>
+//             <li><i class="fas fa-star"></i>Featuring: ${data.Actors}</li>         
+//             <li><i class="fas fa-star"></i>Country: ${data.Country}</li>
 
-            <li><i class="fas fa-star"></i>Genre: ${data.Genre}</li>
-            <li><i class="fas fa-star"></i>BoxOffice: ${data.BoxOffice}</li>
-        </ul>
-        <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
-        <button class='read-plot' id='read-plot' onclick=readPlot()>Read plot</button>
+//             <li><i class="fas fa-star"></i>Genre: ${data.Genre}</li>
+//             <li><i class="fas fa-star"></i>BoxOffice: ${data.BoxOffice}</li>
+//         </ul>
+//         <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
+//         <button class='read-plot' id='read-plot' onclick=readPlot()>Read plot</button>
         
-        </div>
+//         </div>
         
-        ${data.Poster !== 'N/A' ? `<div class="img-container">
-        <img src=${data.Poster} alt='${data.Title}'></img>
-        </div>` : ''}
+//         ${data.Poster !== 'N/A' ? `<div class="img-container">
+//         <img src=${data.Poster} alt='${data.Title}'></img>
+//         </div>` : ''}
         
-        </div>`
-        goBackBtn.style.visibility = 'flex';
-        movieDetailEl.style.display = 'flex';
-    }
+//         </div>`
+//         goBackBtn.style.visibility = 'flex';
+//         movieDetailEl.style.display = 'flex';
+//     }
    
     
-}
+// }
 
 function readPlot() {
   

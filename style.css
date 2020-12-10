@@ -103,7 +103,7 @@ body {
   flex-direction: column-reverse;
 }
 
-.main.movies {
+.main .movies-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
