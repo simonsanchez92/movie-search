@@ -390,7 +390,7 @@ body {
   }
 
   .img-container {
-    /* margin: 20px auto; */
+    border-right: 0;
   }
 
   .img-container img {
