@@ -56,8 +56,8 @@ const showMovies = (movies, url)=>{
     const {page, results, total_pages} = movies;
    
     pagination.innerHTML = `
-            <button class='btn' onclick="getPrevPage('${url}')">Prev</button>
-            <button class='btn' onclick="getNextPage('${url}', '${total_pages}')">Next</button>
+            <button class='btn' onclick="getPrevPage('${url}')"><i class="far fa-hand-point-left"></i>Prev</button>
+            <button class='btn' onclick="getNextPage('${url}', '${total_pages}')">Next<i class="far fa-hand-point-right"></i></button>
     `
 
     //Insert search result text
@@ -97,9 +97,10 @@ async function movieDetail(id){
 function showMovieDetail(data){
 
     resultsContainer.style.display = 'none';
-    console.log(data)
+
+
     movieDetailEl.style.display = 'flex';
-        
+    pagination.style.display = 'none';
     movieDetailEl.innerHTML = `
     
     
@@ -122,9 +123,16 @@ function showMovieDetail(data){
     
 
     </div>
-    <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
+    <button class='return-btn' id='return-btn' onclick=returnHome()>Return<i class="fas fa-undo-alt return-btn-icon"></i></button>
     `
     
+}
+
+function returnHome() {
+    resultsContainer.style.display = 'flex';
+    pagination.style.display = 'flex';
+
+    movieDetailEl.style.display = 'none';
 }
 
 
@@ -259,36 +267,36 @@ const getPrevPage = (url)=>{
     
 // }
 
-function readPlot() {
+// function readPlot() {
   
-let currentTitle = currentMovie.Title;
+// let currentTitle = currentMovie.Title;
    
 
-    fetch(`http://www.omdbapi.com/?t=${currentTitle}&apikey=9bdd7c5c`)
-        .then(res => res.json())
-        .then(data => {
+//     fetch(`http://www.omdbapi.com/?t=${currentTitle}&apikey=9bdd7c5c`)
+//         .then(res => res.json())
+//         .then(data => {
 
-            movieDetailEl.classList.add('plot');
-            movieDetailContainer.innerHTML = `
+//             movieDetailEl.classList.add('plot');
+//             movieDetailContainer.innerHTML = `
         
-        <div class='results-info'>
-        <div class='movie-data'>
-        <h3>${data.Title}<i class="fas fa-film"></i></h3>
+//         <div class='results-info'>
+//         <div class='movie-data'>
+//         <h3>${data.Title}<i class="fas fa-film"></i></h3>
         
-        <p class='plot-text'>${data.Plot}<p>
+//         <p class='plot-text'>${data.Plot}<p>
         
-        <button class='go-back-btn' id='go-back-btn' onclick=goBack()>Go back</button>
-        <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
-        </div>
-        </div>
+//         <button class='go-back-btn' id='go-back-btn' onclick=goBack()>Go back</button>
+//         <button class='return-btn' id='return-btn' onclick=returnHome()><i class="fas fa-undo-alt return-btn-icon"></i></button>
+//         </div>
+//         </div>
         
-        ${data.Poster !== 'N/A' ? `<div class="img-container">
-        <img src=${data.Poster} alt='${data.Title}'></img>
-        </div>` : ''}     
+//         ${data.Poster !== 'N/A' ? `<div class="img-container">
+//         <img src=${data.Poster} alt='${data.Title}'></img>
+//         </div>` : ''}     
         
-        `
-        })
-}
+//         `
+//         })
+// }
 
 // function goBack() {
 //     console.log(currentMovie);
@@ -299,10 +307,7 @@ let currentTitle = currentMovie.Title;
 //     readPlotBtn.style.visibility = 'visible';
 // }
 
-// function returnHome() {
-//     searchResults.style.display = 'flex';
-//     movieDetailEl.style.display = 'none';
-// }
+
 
 
 
@@ -312,19 +317,24 @@ let currentTitle = currentMovie.Title;
 //Event listeners
 searchInput.addEventListener('input', (e) => {
     searchText = e.target.value.trim();
-    // console.log(searchText);
+    
 });
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    currentMovie = undefined;
-   resultsContainer.style.display = 'flex';
-    // mainResults.innerHTML = '';
-    // getAllData();
-    page = 1;
-    const query = SEARCH_API + searchText + `&page=${page}`;
-    console.log(query)
-    getMovies(query);
-    searchInput.value = '';
-    // populateUI();
+   
+    if(searchText !== ''){
+        resultsContainer.style.display = 'flex';
+        mainResults.innerHTML = '';
+        movieDetailEl.style.display = 'none';
+       
+        page = 1;
+        const query = SEARCH_API + searchText + `&page=${page}`;
+        console.log(query)
+        getMovies(query);
+        searchInput.value = '';
+        searchText = '';
+    }
+   
+    
 })
