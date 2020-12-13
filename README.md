@@ -10,6 +10,3 @@
   <li>CSS3</li>
   <li>Vanilla JavaSCript</li>
 </ul>
-
-
-
