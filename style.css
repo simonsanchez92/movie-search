@@ -161,12 +161,33 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
+  padding: 80px 0;
   background-color: rgba(0, 0, 0, 0.431);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   transition: opacity 0.2s ease-in;
   opacity: 0;
   border-radius: 6px;
+}
+
+.card-overlay .movie-rating {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-overlay .movie-rating i {
+  font-size: 24px;
+  padding: 10px;
+}
+
+.card-overlay .movie-rating span {
+  font-size: 24px;
+}
+
+.card-overlay h3 {
+  font-size: 26px;
 }
 
 .card-overlay button {
@@ -174,8 +195,7 @@ body {
   cursor: pointer;
   background-color: #d2d0d6de;
   border: 2px solid #d2d0d6de;
-  margin-top: auto;
-  margin-bottom: 30px;
+
   padding: 10px;
   width: 95%;
   font-size: 18px;

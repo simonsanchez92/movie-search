@@ -78,7 +78,19 @@ const showMovies = (movies, url)=>{
         <div class="movie-img-container">
 
         <img src="${movie.poster_path !== null ? IMG_PATH + movie.poster_path : 'img/default.jpg'}" alt="${movie.original_title}">
-        <div class="card-overlay"> <button onclick="movieDetail(${movie.id})">See More...</button></div>
+        
+        <div class="card-overlay">
+        
+        <div class='movie-rating'>
+            <i class="fas fa-star"></i>
+            <span>${movie.vote_average}/10</span>
+        </div>
+
+        <h3>Movie Genre</h3>
+
+        <button onclick="movieDetail(${movie.id})">See More...</button>
+
+        </div>
         
         </div> 
         
