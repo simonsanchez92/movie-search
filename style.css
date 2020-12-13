@@ -107,23 +107,29 @@ body {
   flex-wrap: wrap;
 }
 
+/* Individual Cards */
+
 .main .movie-card {
   width: 300px;
+
   margin: 20px 10px;
   text-align: center;
   position: relative;
   display: flex;
   flex-direction: column;
+
+  border-radius: 5px;
 }
 .fa-tv {
+  color: #c54b3d;
   z-index: 8;
   font-size: 20px;
   position: absolute;
-  top: -12px;
+  top: -28px;
   left: -0px;
 }
 
-.main .movie-card h3 {
+/* .main .movie-card h3 {
   z-index: 5;
   font-size: 22px;
   letter-spacing: 1.2px;
@@ -134,29 +140,28 @@ body {
   border-bottom: 0;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-}
+} */
 
 .main .movie-card .movie-img-container {
+  position: relative;
   flex: 1;
+  border: 4px solid #fff;
 }
 
 .main .movie-card .movie-img-container img {
   width: 100%;
   height: 100%;
   margin: 0;
-  border: 2px solid rgba(0, 0, 0, 0.7);
-  border-top: 2px solid rgba(0, 0, 0, 0.7);
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
+  border-radius: 5px;
 }
 
-.main .movie-card:hover .card-overlay {
+.main .movie-img-container:hover .card-overlay {
   cursor: pointer;
   display: flex;
   opacity: 1;
 }
 
-.main .movie-card .card-overlay {
+.card-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -194,6 +199,8 @@ body {
   color: #eee;
   background-color: transparent;
 }
+
+/* End of Cards */
 
 .main h2 {
   font-size: 42px;

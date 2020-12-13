@@ -74,14 +74,23 @@ const showMovies = (movies, url)=>{
 
         return `<div class="movie-card">
         <i class="fas fa-tv"></i>
-        <h3>${movie.original_title}</h3>
+       
         <div class="movie-img-container">
+
         <img src="${movie.poster_path !== null ? IMG_PATH + movie.poster_path : 'img/default.jpg'}" alt="${movie.original_title}">
-        </div> 
         <div class="card-overlay"> <button onclick="movieDetail(${movie.id})">See More...</button></div>
-        </div>`
+        
+        </div> 
+        
+        <span>titulo</span>
+        <span>2998</span>
+        </div>
+        
+        `
     }).join(""); 
 }
+
+{/* <h3>${movie.original_title}</h3> */}
 
 async function movieDetail(id){
     console.log(id)
