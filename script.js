@@ -82,8 +82,11 @@ const showMovies = (movies, url)=>{
         
         </div> 
         
-        <span>titulo</span>
-        <span>2998</span>
+        <div class='title-year-box'>
+        <span><b>${movie.original_title}</b></span>
+        <span>${movie.release_date.split('-')[0]}</span>
+        </div>
+  
         </div>
         
         `

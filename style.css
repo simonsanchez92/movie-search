@@ -155,12 +155,6 @@ body {
   border-radius: 5px;
 }
 
-.main .movie-img-container:hover .card-overlay {
-  cursor: pointer;
-  display: flex;
-  opacity: 1;
-}
-
 .card-overlay {
   position: absolute;
   top: 0;
@@ -182,6 +176,7 @@ body {
   border: 2px solid #d2d0d6de;
   margin-top: auto;
   margin-bottom: 30px;
+  padding: 10px;
   width: 95%;
   font-size: 18px;
   /* letter-spacing: 1.4px; */
@@ -189,9 +184,19 @@ body {
   color: #0a0911f5;
   text-transform: capitalize;
   border: none;
-  padding: 10px;
   border-radius: 5px;
+  transform: translateY(20px);
   transition: background-color 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+}
+
+.main .movie-img-container:hover .card-overlay {
+  cursor: pointer;
+  display: flex;
+  opacity: 1;
+}
+.main .movie-img-container:hover button {
+  transform: translateY(0);
 }
 
 .card-overlay button:hover {
@@ -200,6 +205,16 @@ body {
   background-color: transparent;
 }
 
+.movie-card .title-year-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6px;
+}
+.movie-card .title-year-box span {
+  text-align: left;
+  font-size: 14px;
+  padding: 2px 12px;
+}
 /* End of Cards */
 
 .main h2 {
