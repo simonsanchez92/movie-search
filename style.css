@@ -12,21 +12,14 @@ body {
   margin: 0;
   font-family: "Merriweather", serif;
   background: rgb(78, 68, 129);
+  background: linear-gradient(
+    90deg,
+    rgba(78, 68, 129, 1) 59%,
+    rgba(125, 109, 203, 1) 93%
+  );
   color: white;
   padding: 30px auto;
 }
-
-/* .container {
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-  border-radius: 5px;
-} */
 
 .search-container {
   transform: translateX(-75%);
@@ -99,6 +92,10 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column-reverse;
+  padding-top: 20px;
+  border-top: 2px solid rgba(0, 0, 0, 0.205);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.205);
+  background-color: rgba(0, 0, 0, 0.137);
 }
 
 .main .movies-container {
@@ -175,8 +172,15 @@ body {
   font-size: 24px;
 }
 
-.card-overlay h3 {
-  font-size: 26px;
+.card-overlay ul {
+  padding: 0;
+  text-align: justify;
+}
+
+.card-overlay ul li {
+  list-style-type: none;
+  padding: 3px 0;
+  font-size: 22px;
 }
 
 .card-overlay button {
@@ -242,8 +246,9 @@ body {
 }
 
 .movie-detail {
-  background-color: rgba(0, 0, 0, 0.23);
-
+  background-color: rgba(0, 0, 0, 0.137);
+  border-top: 3px solid rgba(0, 0, 0, 0.205);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.205);
   padding: 20px;
   /* width: 700px; */
   max-width: 100%;
