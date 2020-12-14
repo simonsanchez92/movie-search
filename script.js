@@ -51,10 +51,17 @@ const getMovies = async (url)=>{
 
 getMovies(API_URL);
 
-const showMovies = (movies, url)=>{
+const showMovies = async (movies, url)=>{
     //Destructure data
     const {page, results, total_pages} = movies;
-   
+
+    //Getting all genres 
+    const data = await fetch(' https://api.themoviedb.org/3/genre/movie/list?api_key=4c0c205a5315c151196343cd53dbf96f&language=en-US');
+    const res = await data.json();
+    const {genres} = res;
+
+
+
     pagination.innerHTML = `
             <button class='btn' onclick="getPrevPage('${url}')"><i class="far fa-hand-point-left"></i>Prev</button>
             <button class='btn' onclick="getNextPage('${url}', '${total_pages}')">Next<i class="far fa-hand-point-right"></i></button>
@@ -69,6 +76,21 @@ const showMovies = (movies, url)=>{
     //Map over items and inject in UI
       
     mainResults.innerHTML = results.map((movie, i)=>{
+
+        //Getting genres for each specific movie
+
+        const genreId = movie.genre_ids;
+        let movieGenres = [];
+        
+        genreId.forEach(id=>{
+            genres.forEach(obj=>{
+                if(id === obj.id){
+                    movieGenres.push(obj.name);
+                }
+            })
+        });
+    console.log( movieGenres)
+        
         // currentMovies.push(movie);
         // console.log(movie);
 
@@ -86,7 +108,9 @@ const showMovies = (movies, url)=>{
             <span>${movie.vote_average}/10</span>
         </div>
 
-        <h3>Movie Genre</h3>
+        <ul>
+        ${movieGenres.map(genre=> `<li>${genre}</li>`).join('')}
+        </ul>
 
         <button onclick="movieDetail(${movie.id})">See More...</button>
 
