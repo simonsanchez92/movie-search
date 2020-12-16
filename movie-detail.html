@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Detail</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css"
+        integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class='container-fluid'>
+
+        <nav class="navbar navbar-expand-md justify-content-between py-3">  
+
+         
+                <h2 class="navbar-brand py-2 m-0" href="#">
+                    <a href="index.html" class='h2'><i class="fas fa-film"></i> TheFinalCut</a>
+                </h2>
+               
+                <ul class="nav d-flex py-2">
+                    <li class="nav-item">
+                      <a class="nav-link active fs-6" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link fs-6" href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link fs-6" href="#">Login</a>
+                    </li>
+                   
+                   
+                  </ul>
+        </nav>
+    </header>
+
+    <div class="search-container" id='search-container'>
+        <div class="search-box">
+
+            <form class='search-form' id='search-form'>
+
+                <input type="text" placeholder='Enter a movie...' class="search-input" id='search-input'>
+                <input value='Search' type='submit' class='search-form search-Btn' id='searchBtn'
+                    placeholder=""></input>
+            </form>
+        </div>
+    </div>
+
+    <main class="movie-detail
+                container-fluid
+                d-flex
+                flex-column
+                justify-content-center" id="movie-detail">
+        
+        <h3 class="movie-title  ">Harry Potter and the Prisoner of Azkaban</h3>
+
+        <div class="movie-data
+                    row
+                    justify-content-center ">
+
+            <div class="poster-container col-sm py-5">
+                <img src="./img/sample-poster.jpg" alt="title">
+            </div>
+
+      
+
+        <div class='movie-data-list 
+                    col-sm-8 
+                    d-flex flex-column 
+                    justify-content-center
+                    '>
+            <p class='my-1 text-justify'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero fuga nisi, sed in unde ratione tempora laborum cum voluptas corporis omnis. Consequuntur necessitatibus corrupti et. Iste quod at cumque nemo odit corrupti? Eaque aliquid aperiam quod expedita. Dolore laboriosam exercitationem maxime libero aperiam qui vero! Nihil, ducimus iure, rem voluptatum adipisci velit qui ut nesciunt ipsa fugiat veniam ipsam. Aperiam!</p>
+            <ul class='py-4'>
+            <li class='py-2'><i class="fas fa-star"></i>imdbRating: 6.4/10</li>
+            <li class='py-2'><i class="fas fa-star"></i>Year: 2005</li>
+            </ul>
+        </div>
+
+        </div>
+
+    <button class='return-btn' id='return-btn' onclick=returnHome()>Return<i class="fas fa-undo-alt return-btn-icon"></i></button>
+    
+</main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
