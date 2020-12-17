@@ -31,7 +31,7 @@ body {
 }
 
 .large {
-  font-size: 3rem;
+  font-size: 2.8rem;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
@@ -371,6 +371,19 @@ form input[type="button"]:hover {
   margin: 0;
   margin-right: 10px;
 } */
+
+/* Register / sign in */
+
+.form div input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+  font-size: 0.9rem;
+}
+
+.register-btn {
+  width: 100%;
+}
+
 .movie-data-list li {
   /* 
   padding: 8px 0;
@@ -398,6 +411,7 @@ form input[type="button"]:hover {
 
 .return-btn-icon {
   padding-left: 10px;
+  font-size: 1rem;
 }
 
 .return-btn:hover {
