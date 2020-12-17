@@ -55,7 +55,7 @@
             id='search-input'/>
 
       <input class='search-form search-Btn
-                   btn btn-outline-secondary'
+                   btn'
              value='Search' type='button'  id='searchBtn'
           placeholder=""/>
                 </div>
@@ -67,6 +67,7 @@
 
     <main class="movie-detail
                 container-fluid
+                py-4
                 d-flex
                 flex-column
                 justify-content-center" id="movie-detail">
@@ -75,7 +76,8 @@
 
         <div class="movie-data
                     row
-                    justify-content-center ">
+                    justify-content-center
+                    my-4 ">
 
             <div class="poster-container col-sm py-5">
                 <img src="./img/sample-poster.jpg" alt="title">
@@ -101,7 +103,7 @@
 
         </div>
 
-    <button class='return-btn' id='return-btn' onclick=returnHome()>Return<i class="fas fa-undo-alt return-btn-icon"></i></button>
+    <button class='return-btn btn btn-sm' id='return-btn' onclick=returnHome()>Return<i class="fas fa-undo-alt return-btn-icon"></i></button>
     
 </main>
 

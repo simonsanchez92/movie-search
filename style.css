@@ -21,7 +21,6 @@ body {
     rgba(125, 109, 203, 1) 93%
   );
   color: white;
-  padding: 30px auto;
 }
 
 /* Text Styles*/
@@ -112,7 +111,7 @@ form input[type="button"]:focus {
 }
 
 form input[type="button"]:hover {
-  color: rgb(78, 68, 129);
+  color: rgba(0, 0, 0, 0.589);
 }
 
 .main {
@@ -270,7 +269,7 @@ form input[type="button"]:hover {
   background-color: rgba(0, 0, 0, 0.137);
   border-top: 3px solid rgba(0, 0, 0, 0.205);
   border-bottom: 3px solid rgba(0, 0, 0, 0.205);
-  padding: 20px;
+  /* padding: 30px 10px; */
   /* width: 700px; */
   max-width: 100%;
   /* display: none; */
@@ -386,22 +385,25 @@ form input[type="button"]:hover {
 
 .return-btn {
   cursor: pointer;
-  background-color: #a7a0b4de;
-  border: 2px solid #a7a0b4de;
-  border-radius: 6px;
-  font-size: 24px;
-  padding: 0 20px;
-  transition: background 0.1s ease-in-out;
+  /* ;
+  border: 2px solid #a7a0b4de; */
+  background-color: #c54b3d;
+  font-size: 1.2rem;
+  border: 1px solid #c54b3d;
+  color: #ffffff;
+
+  /* padding: 0 20px; */
+  transition: color 0.2s ease-in-out;
 }
 
 .return-btn-icon {
-  margin: 0 auto;
-  padding: 10px;
+  padding-left: 10px;
 }
 
 .return-btn:hover {
-  color: rgba(255, 255, 255, 0.815);
-  background-color: transparent;
+  /* color: rgba(255, 255, 255, 0.815); */
+  color: rgba(0, 0, 0, 0.589);
+  /* background-color: transparent; */
 }
 
 .read-plot:focus,
