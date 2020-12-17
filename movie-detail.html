@@ -38,16 +38,31 @@
         </nav>
     </header>
 
-    <div class="search-container" id='search-container'>
-        <div class="search-box">
+    <div class="search-container container-fluid
+                d-flex
+                justify-content-center" id='search-container'>
 
-            <form class='search-form' id='search-form'>
+        <!-- <div class="search-box"> -->
 
-                <input type="text" placeholder='Enter a movie...' class="search-input" id='search-input'>
-                <input value='Search' type='submit' class='search-form search-Btn' id='searchBtn'
-                    placeholder=""></input>
+            <form class='search-form py-4 px-1' id='search-form'>
+                
+                <div class="input-group ">
+
+    <input class="search-input
+                  form-control" 
+            type="text" 
+            placeholder='Begin your search...'  
+            id='search-input'/>
+
+      <input class='search-form search-Btn
+                   btn btn-outline-secondary'
+             value='Search' type='button'  id='searchBtn'
+          placeholder=""/>
+                </div>
+               
             </form>
-        </div>
+        <!-- </div> -->
+
     </div>
 
     <main class="movie-detail
@@ -73,11 +88,15 @@
                     d-flex flex-column 
                     justify-content-center
                     '>
-            <p class='my-1 text-justify'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero fuga nisi, sed in unde ratione tempora laborum cum voluptas corporis omnis. Consequuntur necessitatibus corrupti et. Iste quod at cumque nemo odit corrupti? Eaque aliquid aperiam quod expedita. Dolore laboriosam exercitationem maxime libero aperiam qui vero! Nihil, ducimus iure, rem voluptatum adipisci velit qui ut nesciunt ipsa fugiat veniam ipsam. Aperiam!</p>
-            <ul class='py-4'>
-            <li class='py-2'><i class="fas fa-star"></i>imdbRating: 6.4/10</li>
-            <li class='py-2'><i class="fas fa-star"></i>Year: 2005</li>
+            <p class='my-1 '>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero fuga nisi, sed in unde ratione tempora laborum cum voluptas corporis omnis. Consequuntur necessitatibus corrupti et. Iste quod at cumque nemo odit corrupti? Eaque aliquid aperiam quod expedita. Dolore laboriosam exercitationem maxime libero aperiam qui vero! Nihil, ducimus iure, rem voluptatum adipisci velit qui ut nesciunt ipsa fugiat veniam ipsam. Aperiam!</p>
+           
+            <ul class='list-group list-group-horizontal-md py-4 d-flex flex-wrap   align-items-center'>
+            <li class='py-2 my-2 mx-2'><i class="fas fa-star mx-2"></i>imdbRating: 6.4/10</li>
+            <li class='py-2 my-2 mx-2'><i class="fas fa-star mx-2"></i>Year: 2005</li>
+            <li class='py-2 my-2 mx-2'><i class="fas fa-star mx-2"></i>imdbRating: 6.4/10</li>
+            <li class='py-2 my-2 mx-2'><i class="fas fa-star mx-2"></i>Year: 2005</li>
             </ul>
+            
         </div>
 
         </div>
