@@ -117,7 +117,7 @@ form input[type="button"]:hover {
 .main {
   width: 100%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   padding-top: 20px;
   border-top: 2px solid rgba(0, 0, 0, 0.205);
   border-bottom: 3px solid rgba(0, 0, 0, 0.205);
@@ -260,8 +260,8 @@ form input[type="button"]:hover {
 .main h2 {
   font-size: 42px;
   color: #c54b3d;
-  padding-left: 10px;
-  margin-bottom: 60px;
+  padding: 20px;
+  /* margin-bottom: 60px; */
   background-color: transparent;
 }
 

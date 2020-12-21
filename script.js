@@ -1,7 +1,7 @@
 const searchContainer = document.getElementById('search-container');
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
-const resultText = document.getElementById('search-result-text');
+const resultText = document.getElementById('search-text');
 // const searchResults = document.getElementById('main');
 
 const resultsContainer = document.getElementById('main');
@@ -374,7 +374,6 @@ searchForm.addEventListener('submit', (e) => {
     if(searchText !== ''){
         resultsContainer.style.display = 'flex';
         mainResults.innerHTML = '';
-        movieDetailEl.style.display = 'none';
        
         page = 1;
         const query = SEARCH_API + searchText + `&page=${page}`;
