@@ -374,7 +374,7 @@ searchForm.addEventListener('submit', (e) => {
     if(searchText !== ''){
         resultsContainer.style.display = 'flex';
         mainResults.innerHTML = '';
-       
+        resultText.innerText = `Results for '${searchText}'`;
         page = 1;
         const query = SEARCH_API + searchText + `&page=${page}`;
         console.log(query)
